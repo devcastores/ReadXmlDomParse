@@ -24,6 +24,11 @@ public class ReadXmlDomParserFacturav2 {
 	public static void main(String[] args) {
 
 		/*
+		 * Multi Root:
+		 * https://stackoverflow.com/questions/30984236/xml-file-containing-multiple-root-elements/31274225
+		 */
+		
+		/*
 		 * FLECHA AMARILLA
 		 */
 		final String xmlStr_1 = "\r\n"
