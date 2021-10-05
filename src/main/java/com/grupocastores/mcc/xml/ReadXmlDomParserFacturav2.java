@@ -9,9 +9,12 @@ import org.xml.sax.InputSource;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
@@ -317,6 +320,8 @@ public class ReadXmlDomParserFacturav2 {
 		final String xmlStr_11 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><cfdi:Comprobante xmlns:cfdi=\"http://www.sat.gob.mx/cfd/3\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd\" xmlns:implocal=\"http://www.sat.gob.mx/implocal\" Version=\"3.3\" Serie=\"HPV\" Folio=\"9400\" Fecha=\"2021-05-21T09:01:46\" Sello=\"Xw/VYUCDjnI+V+icrGOHqmx3/AOe2xORkyH1ZOksp/bUUreXXSNsBIW/mre7tsx52/xSSKzUScpawfzvxqf4BBzHzR//P6C/VoZYGHkM0iEk8/cJ0OoKgKmGKot1rA4B0A5kNluVEovWfZlBVj2ZZSNCp6zwYsKdTuS8dlWhapQvsQu0XUaQMWDH50U72IUXYLtoU57rh6i9eut5QU0GU5o3Zdvuj/j+9CMi8tcLLbmH/Dr0ZEoachR+U9WuuHU1+jwTm4h1DWcK0S8sEnrPpHr4Id7QWewCaz/073VKSM88qnEhmipWM9sLVimGJRIonbJTpqE8wmqesh8VlqOuJQ==\" FormaPago=\"01\" NoCertificado=\"00001000000409670692\" Certificado=\"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\" SubTotal=\"3209.94\" Moneda=\"MXN\" Total=\"3815.00\" TipoDeComprobante=\"I\" MetodoPago=\"PUE\" LugarExpedicion=\"45560\">  <cfdi:Emisor Rfc=\"HPV1710237V4\" Nombre=\"HOTEL POSADA VIRREYES S.A. DE C.V.\" RegimenFiscal=\"601\"/>  <cfdi:Receptor Rfc=\"TCB7401303A4\" Nombre=\"TRANSPORTES CASTORES DE BAJA CALIFORNIA, SA DE CV\" UsoCFDI=\"G03\"/>  <cfdi:Conceptos>    <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"17/05/21,RH,118\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicios\" Descripcion=\"RENTA HABITACION\" ValorUnitario=\"764.71\" Importe=\"764.71\">      <cfdi:Impuestos>        <cfdi:Traslados>          <cfdi:Traslado Base=\"764.71\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.160000\" Importe=\"122.35\"/>        </cfdi:Traslados>      </cfdi:Impuestos>    </cfdi:Concepto>    <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"18/05/21,RH,118\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicios\" Descripcion=\"RENTA HABITACION\" ValorUnitario=\"764.71\" Importe=\"764.71\">      <cfdi:Impuestos>        <cfdi:Traslados>          <cfdi:Traslado Base=\"764.71\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.160000\" Importe=\"122.35\"/>        </cfdi:Traslados>      </cfdi:Impuestos>    </cfdi:Concepto>    <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"19/05/21,RH,118\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicios\" Descripcion=\"RENTA HABITACION\" ValorUnitario=\"764.71\" Importe=\"764.71\">      <cfdi:Impuestos>        <cfdi:Traslados>          <cfdi:Traslado Base=\"764.71\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.160000\" Importe=\"122.35\"/>        </cfdi:Traslados>      </cfdi:Impuestos>    </cfdi:Concepto>    <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"20/05/21,RP,118\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicios\" Descripcion=\"PAQUETES\" ValorUnitario=\"915.81\" Importe=\"915.81\">      <cfdi:Impuestos>        <cfdi:Traslados>          <cfdi:Traslado Base=\"915.81\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.160000\" Importe=\"146.53\"/>        </cfdi:Traslados>      </cfdi:Impuestos>    </cfdi:Concepto>  </cfdi:Conceptos>  <cfdi:Impuestos TotalImpuestosTrasladados=\"513.58\">    <cfdi:Traslados>      <cfdi:Traslado Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.160000\" Importe=\"513.58\"/>    </cfdi:Traslados>  </cfdi:Impuestos>  <cfdi:Complemento>    <implocal:ImpuestosLocales version=\"1.0\" TotaldeTraslados=\"91.48\" TotaldeRetenciones=\"0.00\">      <implocal:TrasladosLocales ImpLocTrasladado=\"I.S.H.\" TasadeTraslado=\"3.00\" Importe=\"91.48\"/>    </implocal:ImpuestosLocales>  <tfd:TimbreFiscalDigital xmlns:tfd=\"http://www.sat.gob.mx/TimbreFiscalDigital\" xsi:schemaLocation=\"http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd\" Version=\"1.1\" FechaTimbrado=\"2021-05-21T09:01:55\" UUID=\"a1ebea89-fc43-47c6-bf4f-553541b6e285\" NoCertificadoSAT=\"00001000000507247013\" SelloCFD=\"Xw/VYUCDjnI+V+icrGOHqmx3/AOe2xORkyH1ZOksp/bUUreXXSNsBIW/mre7tsx52/xSSKzUScpawfzvxqf4BBzHzR//P6C/VoZYGHkM0iEk8/cJ0OoKgKmGKot1rA4B0A5kNluVEovWfZlBVj2ZZSNCp6zwYsKdTuS8dlWhapQvsQu0XUaQMWDH50U72IUXYLtoU57rh6i9eut5QU0GU5o3Zdvuj/j+9CMi8tcLLbmH/Dr0ZEoachR+U9WuuHU1+jwTm4h1DWcK0S8sEnrPpHr4Id7QWewCaz/073VKSM88qnEhmipWM9sLVimGJRIonbJTpqE8wmqesh8VlqOuJQ==\" SelloSAT=\"sQ1czU4Pnq0FKI0T9/4SfKjg/zkRJiVf6GixVHTQfup8NKZD16g2fvvJb2zw2tBOcXuA8kfP9dKZfbfQ8SXGXxnbUwbAdw1TQf0rzmaVpb5J0GQMxbWjkd4wpwFMrWl3btanxJTlHL+vq5Ae8ay6nAblR9DFukrzNgODIby6C/cyK35UbHsFAqtpWPhnP7P/kR+gBu5CYcDooCzmPGh2fun/Urou09+cuCxKNtIA17y8SXEVW7NkhGznSZHJVPptS/DBDOprRO1XO/bqC1lmh6b+mY2y97gm1lVT2sN2+/HqkWuppnjrDejvdmpIeRtndtllM6IpZAr2ndhsQLe9DA==\" RfcProvCertif=\"CAD100607RY8\" /></cfdi:Complemento></cfdi:Comprobante>\r\n"
 				+ "";
 		
+		final String xmlStr_12 = "?<?xml version=\"1.0\" encoding=\"utf-8\"?>  <cfdi:Comprobante xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:implocal=\"http://www.sat.gob.mx/implocal\" xmlns:tfd=\"http://www.sat.gob.mx/TimbreFiscalDigital\" xmlns:csadd=\"http://cfd.sishotel.mx/cfdi/shNS\" xsi:schemaLocation=\"http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd http://cfd.sishotel.mx/cfdi/shNS http://cfd.sishotel.mx/cfdi/shNS/shNS.xsd\" Version=\"3.3\" Serie=\"D\" Folio=\"53568\" Fecha=\"2021-09-13T08:26:44\" Sello=\"GYx3OOoYLu17HKqUs9A4lUHD/2g7OvO3jTcOt7jbTNcCVam6a9UvO0eUD/Q5/vs15Zfx4KMdu5sw31L9A50sM5RLs6dY5Ew66bXTGDNKXVdJ2zqaUZ2LfS1GWYYhisVqk1GmdhJvaAxDCMpcYhXvpCeNemqTDj6/LloPVFcj1aBW+s2vWYXiCXxXH4lb4EmnH9OG6b8EOBCNRuyKNAWLziNRRrRAIhDC9+qzT+dK6rGBeoz6UGXXsw+220RE3GRlj2ze9NaMKwX0JpdwL6YBJ9aAgjfADfHRaLaaDSNKWd4Ocztad1Ijgn1mTyGgk3xhf8ULMlIjW7QWlpLByB547Q==\" FormaPago=\"01\" NoCertificado=\"00001000000505514261\" Certificado=\"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\" SubTotal=\"14875.00\" Moneda=\"MXN\" Total=\"16362.50\" TipoDeComprobante=\"I\" MetodoPago=\"PUE\" LugarExpedicion=\"88290\" xmlns:cfdi=\"http://www.sat.gob.mx/cfd/3\">    <cfdi:Emisor Rfc=\"MHH890731SH2\" Nombre=\"MOTOR HOTEL HACIENDA, S.A. DE C.V.\" RegimenFiscal=\"601\" />    <cfdi:Receptor Rfc=\"TCB7401303A4\" Nombre=\"TRANSPORTES CASTORES DE BAJA CALIFORNIA SA DE CV\" UsoCFDI=\"G03\" />    <cfdi:Conceptos>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>      <cfdi:Concepto ClaveProdServ=\"90111800\" NoIdentificacion=\"RM\" Cantidad=\"1.00\" ClaveUnidad=\"E48\" Unidad=\"Servicio\" Descripcion=\"Cargo por Habitacion\" ValorUnitario=\"875.00\" Importe=\"875.00\">        <cfdi:Impuestos>          <cfdi:Traslados>            <cfdi:Traslado Base=\"875.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"70.00\" />          </cfdi:Traslados>        </cfdi:Impuestos>      </cfdi:Concepto>    </cfdi:Conceptos>    <cfdi:Impuestos TotalImpuestosTrasladados=\"1190.00\">      <cfdi:Traslados>        <cfdi:Traslado Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.080000\" Importe=\"1190.00\" />      </cfdi:Traslados>    </cfdi:Impuestos>    <cfdi:Complemento>      <implocal:ImpuestosLocales version=\"1.0\" TotaldeRetenciones=\"0.00\" TotaldeTraslados=\"297.50\">        <implocal:TrasladosLocales ImpLocTrasladado=\"ISH\" TasadeTraslado=\"2.00\" Importe=\"297.50\" />      </implocal:ImpuestosLocales>      <tfd:TimbreFiscalDigital Version=\"1.1\" UUID=\"2FDCF0EC-DA34-42D4-BDFC-4B86BC134CA9\" FechaTimbrado=\"2021-09-13T08:31:02\" SelloCFD=\"GYx3OOoYLu17HKqUs9A4lUHD/2g7OvO3jTcOt7jbTNcCVam6a9UvO0eUD/Q5/vs15Zfx4KMdu5sw31L9A50sM5RLs6dY5Ew66bXTGDNKXVdJ2zqaUZ2LfS1GWYYhisVqk1GmdhJvaAxDCMpcYhXvpCeNemqTDj6/LloPVFcj1aBW+s2vWYXiCXxXH4lb4EmnH9OG6b8EOBCNRuyKNAWLziNRRrRAIhDC9+qzT+dK6rGBeoz6UGXXsw+220RE3GRlj2ze9NaMKwX0JpdwL6YBJ9aAgjfADfHRaLaaDSNKWd4Ocztad1Ijgn1mTyGgk3xhf8ULMlIjW7QWlpLByB547Q==\" NoCertificadoSAT=\"00001000000504204971\" SelloSAT=\"sb0ZeB/Sss7GfClE+S/o7EfKrPA6lDCzwzISI6WdX2/k7lAp8m3mCBOYJbrKjjKlMUnEVj5bbQrnY5mV4to8J0A06yfGQXHgYhHoFInu4WdOHvpb4IzKdZNVJrsCVmkzOSN59QwowOxHuyL8MGfgxyUFUUc8wwjFa3KIAIP/jp2u9H62D8VKdo1BpQSKykcsBXjbyxUb4/sz4xZbjVvfUp88aUonRuETqoZfTXQGMomDLE5cxJdW6/dNN6tWoqPoO01s5mFsNnd83s3M2BKzNZWffZxwqqNdT0/0GDUe8kmv5n6yjY1lUS7JVsR0PhjuQLtnvIvf6VA9Myt73FTyZg==\" RfcProvCertif=\"PPD101129EA3\" xsi:schemaLocation=\"http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd\" />    </cfdi:Complemento>    <cfdi:Addenda>      <csadd:AddendaHuesped FolioInterno=\"772691132\" FechaEntrada=\"23/8/2021\" FechaSalida=\"18/9/2021\" Habitacion=\"143\" Personas=\"2\" Ninios=\"0\" Tarifa=\"0\" ImporteTarifa=\"875.00\" Email=\"mayo260490@gmail.com\" TotalFactura=\"16362.50\" FormaDePago=\"Dinero en efectivo\" />    </cfdi:Addenda>  </cfdi:Comprobante>";
+	
 		try {
 
 			/*
@@ -324,7 +329,7 @@ public class ReadXmlDomParserFacturav2 {
 			 * select string xmlStr
 			 */
 			
-			String xmlStr = xmlStr_8;
+			String xmlStr = xmlStr_12;
 			
 			/*
 			 * Remove XML version
@@ -333,13 +338,16 @@ public class ReadXmlDomParserFacturav2 {
 			
 			/*
 			 * MultiRootXML Read Support
+			 * Estructura el XML para que soporte multiples root
 			 */
-	        Document doc = convertStringToDocumentv2(xmlStr);
+	        Document docTidy = convertStringToDocumentMultiRoot(xmlStr);
 	        
+	        xmlStr = formatXml(docTidy); //format pretty XML
 	        /*
 	         * OneRoot Read Support
+	         * Convierte String -> Document
 	         */
-	        //Document doc = convertStringToDocument(xmlStr_2);
+	        Document doc = convertStringToDocument(xmlStr);
 	        
 		    // optional, but recommended
 			// http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
@@ -385,7 +393,11 @@ public class ReadXmlDomParserFacturav2 {
 		    			 * cfdi:Impuestos
 		    			 */
 		    			NodeList list = doc.getElementsByTagName("cfdi:Impuestos");
-		    			for (int i = 0; i < 1; i++) {
+		    			/**
+		    			 * NOTA: BUSCA TODOS LOS NODOS QUE SE LLAMEN "cfdi:Impuestos" Y LOS ITERA
+		    			 */
+		    			System.out.println("size:"+list.getLength());
+		    			for (int i = 0; i < list.getLength(); i++) {
 		    				if (list.item(i) != null && !list.item(i).getTextContent().equals("")) {
 		    						
 		    					NodeList child = list.item(i).getChildNodes();
@@ -429,6 +441,7 @@ public class ReadXmlDomParserFacturav2 {
 	
 	/**
 	 * Method para convertir String a Documento
+	 * v1
 	 * @param xmlStr
 	 * @return
 	 */
@@ -452,11 +465,13 @@ public class ReadXmlDomParserFacturav2 {
 	}
 	
 	/**
-	 * Method para convertir String a Documento v2
+	 * Method para convertir String a Documento
+	 * >>>> READ MULTIROOT
+	 * v2
 	 * @param xmlStr
 	 * @return
 	 */
-	private static Document convertStringToDocumentv2(String xmlStr) {
+	private static Document convertStringToDocumentMultiRoot(String xmlStr) {
 		
 		/*
 		 * Read MultiRoot
@@ -484,7 +499,6 @@ public class ReadXmlDomParserFacturav2 {
 			
 			// parse XML file
 			Document doc = builder.parse(new InputSource(new_xmlStr));
-			
 			return doc;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -494,7 +508,7 @@ public class ReadXmlDomParserFacturav2 {
 	
 	/**
 	 * Method para convertir Documento a String
-	 * <<< Da formato al string plano
+	 * v1
 	 * NOTA: PUEDE SOLUCIONAR EL PROBLEMA DE RESIBIR UN TEXTO COMO EL NUMERO 8 Y 9
 	 * @param doc
 	 * @return
@@ -518,6 +532,37 @@ public class ReadXmlDomParserFacturav2 {
 
 		return null;
 	}
-
+	
+	/**
+	 * Method para darle formato al doc
+	 * <<< Da formato al string plano
+	 * v2
+	 * NOTA: PUEDE SOLUCIONAR EL PROBLEMA DE RESIBIR UN TEXTO COMO EL NUMERO 8 Y 9
+	 * @param doc
+	 * @return
+	 */
+	private static  String formatXml(Document doc){
+		// Instantiate the Factory
+		TransformerFactory tf = TransformerFactory.newInstance();
+		Transformer transformer;
+		try {
+			transformer = tf.newTransformer();
+			
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+			
+			// initialize StreamResult with File object to save to file
+			StringWriter writer = new StringWriter();
+			StreamResult result = new StreamResult(writer);
+			DOMSource source = new DOMSource(doc);
+			transformer.transform(source, result);
+			String xmlString = result.getWriter().toString();
+			return xmlString;
+		} catch (TransformerException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
 
