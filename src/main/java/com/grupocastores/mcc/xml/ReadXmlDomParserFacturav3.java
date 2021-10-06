@@ -32,11 +32,12 @@ import java.util.List;
  * v2
  * detecta
  * iva1 || iva2 || 002 || 003 || ieps
+ * SOPORTA
+ * minusculas || diferentes campos de una factura del año 2015-
  * @author desarrollosap_laptop
  *
  */
-
-public class ReadXmlDomParserFacturav2 {
+public class ReadXmlDomParserFacturav3 {
 
 	public static void main(String[] args) {
 
@@ -373,6 +374,35 @@ public class ReadXmlDomParserFacturav2 {
 				+ "          </cfdi:Complemento>\r\n"
 				+ "</cfdi:Comprobante>";
 		
+		/**
+		 * campos diferentes
+		 */
+		final String xmlStr_15 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
+				+ "<cfdi:Comprobante\r\n"
+				+ "    xmlns:cfdi=\"http://www.sat.gob.mx/cfd/3\"\r\n"
+				+ "    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" version=\"3.2\" xsi:schemaLocation=\"http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd\" serie=\"BFABP\" folio=\"1002982\" fecha=\"2015-03-17T12:37:57\" sello=\"TMWqpSknZmMhnaMf2JH4NSNrVz6XT+L5U63QQiGTeLqCpkeTrqEgvFFBKu95Wx8rN3AYQtKhDj3l8LJ5xj1hIIPaov0CcNwqneTHVoF8Vo8HWReP4MzR0LGeXCZ/mBvHOSW5IdcT+/4yvAzlENPGOmZjLNIpOf5P9iHOgf2d7rk=\" formaDePago=\"PAGO EN UNA SOLA EXHIBICIÓN\" noCertificado=\"00001000000300778356\" certificado=\"MIIEkjCCA3qgAwIBAgIUMDAwMDEwMDAwMDAzMDA3NzgzNTYwDQYJKoZIhvcNAQEFBQAwggGKMTgwNgYDVQQDDC9BLkMuIGRlbCBTZXJ2aWNpbyBkZSBBZG1pbmlzdHJhY2nDs24gVHJpYnV0YXJpYTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMR8wHQYJKoZIhvcNAQkBFhBhY29kc0BzYXQuZ29iLm14MSYwJAYDVQQJDB1Bdi4gSGlkYWxnbyA3NywgQ29sLiBHdWVycmVybzEOMAwGA1UEEQwFMDYzMDAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBEaXN0cml0byBGZWRlcmFsMRQwEgYDVQQHDAtDdWF1aHTDqW1vYzEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTUwMwYJKoZIhvcNAQkCDCZSZXNwb25zYWJsZTogQ2xhdWRpYSBDb3ZhcnJ1YmlhcyBPY2hvYTAeFw0xMzA5MDMxNTU4MDVaFw0xNzA5MDMxNTU4MDVaMIHeMSgwJgYDVQQDEx9BVVRPQlVTRVMgREUgTEEgUElFREFEIFNBIERFIENWMSgwJgYDVQQpEx9BVVRPQlVTRVMgREUgTEEgUElFREFEIFNBIERFIENWMSgwJgYDVQQKEx9BVVRPQlVTRVMgREUgTEEgUElFREFEIFNBIERFIENWMSUwIwYDVQQtExxBUEk2NjA5MjczRTAgLyBWRVNDNjcwNzE2N1oxMR4wHAYDVQQFExUgLyBWRVNDNjcwNzE2TUdUR05SMTAxFzAVBgNVBAsTDkNGRElNQVRSSVpMRU9OMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCAnawGuOF2G5NjSHICd/WwL3t2ifF3FVx/4me2lNiMurYQaLP0pq9EB4NY8aMXsi70pG51/SMWLSDYZsWQMsFfbl2cMjtulG23kuhwKhf5jw2IoWJOFdlVTfD7nUu9rTHcJ+TaHxDfq84F6IcNQPQaO/lbm02mHdevDjZ+mZUpeQIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEADQtUsv1HEV0wBglvJloIXKbpK7utLCjEcEog0a5l631H1gwqka48BOVbEnBahd1y4g+C8zc1jM9LUhqAk6cH5xSUU8sIWS0q8brRohjIDxAcAaY4calMBTiICOQ8RGXJ1mI8/4IZkc31B1+VyQIwsRONZg7fQdL6AiDdKhbNI+MSEY2BrhaR4UYtAuded4hWBdWN6jW+S4yVE+VaNYktPtBIPSNS2iwL1FdIOoz5MedijpmbG+bBIqFL+R6OMIOnyj9qd9mszUee98tanNk/Wwjq2hkZV48zTVCfZXkxWyhLHkDubYM+JmlI+Hz1SR1hq6a63+iQ+4irut4/S1/Frg==\" subTotal=\"435.34\" total=\"505\" tipoDeComprobante=\"ingreso\" metodoDePago=\"EFECTIVO\" LugarExpedicion=\"LEON, Guanajuato\" TipoCambio=\"1.0000\" Moneda=\"MXN\">\r\n"
+				+ "    <cfdi:Emisor rfc=\"API6609273E0\" nombre=\"AUTOBUSES DE LA PIEDAD SA DE CV\">\r\n"
+				+ "        <cfdi:DomicilioFiscal calle=\"BLVD. LA LUZ\" noExterior=\"2011\" colonia=\"COL. LAS FUENTES\" municipio=\"LEON\" estado=\"Guanajuato\" pais=\"México\" codigoPostal=\"37270\"/>\r\n"
+				+ "        <cfdi:RegimenFiscal Regimen=\"FISCAL: DE LOS COORDINADOS\"/>\r\n"
+				+ "    </cfdi:Emisor>\r\n"
+				+ "    <cfdi:Receptor rfc=\"TCB7401303A4\" nombre=\"TRANSPORTES CASTORES DE BAJA CALIFORNIA S.A. DE C.V.\">\r\n"
+				+ "        <cfdi:Domicilio calle=\"BLVD.JOSE MA. MORELOS\" noExterior=\"2975\" colonia=\"ALFARO\" municipio=\"LEON\" estado=\"GUANAJUATO\" pais=\"MÉXICO\" codigoPostal=\"37238\"/>\r\n"
+				+ "    </cfdi:Receptor>\r\n"
+				+ "    <cfdi:Conceptos>\r\n"
+				+ "        <cfdi:Concepto cantidad=\"1\" unidad=\"NO APLICA\" noIdentificacion=\"171255410194103\" descripcion=\"SERVICIO DE TRANSPORTE DE PRIMERA PLUS ON-TOL 07/03/2015 COMPLETO, VERONICA MORALES. VTA REALIZADA EN LEON GUANAJUATO, Blvd. Hilario Medina, Int. C No. , Los Gavilanes C.P. 37260\" valorUnitario=\"435.34\" importe=\"435.34\"/>\r\n"
+				+ "    </cfdi:Conceptos>\r\n"
+				+ "    <cfdi:Impuestos totalImpuestosRetenidos=\"0\" totalImpuestosTrasladados=\"69.66\">\r\n"
+				+ "        <cfdi:Traslados>\r\n"
+				+ "            <cfdi:Traslado impuesto=\"IVA\" tasa=\"16\" importe=\"69.66\"/>\r\n"
+				+ "        </cfdi:Traslados>\r\n"
+				+ "    </cfdi:Impuestos>\r\n"
+				+ "    <cfdi:Complemento>\r\n"
+				+ "        <tfd:TimbreFiscalDigital\r\n"
+				+ "            xmlns:tfd=\"http://www.sat.gob.mx/TimbreFiscalDigital\"\r\n"
+				+ "            xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" FechaTimbrado=\"2015-03-17T12:40:07\" UUID=\"3A946BBB-B29E-4947-1400-E07ED4B31762\" noCertificadoSAT=\"00001000000202771790\" selloCFD=\"TMWqpSknZmMhnaMf2JH4NSNrVz6XT+L5U63QQiGTeLqCpkeTrqEgvFFBKu95Wx8rN3AYQtKhDj3l8LJ5xj1hIIPaov0CcNwqneTHVoF8Vo8HWReP4MzR0LGeXCZ/mBvHOSW5IdcT+/4yvAzlENPGOmZjLNIpOf5P9iHOgf2d7rk=\" selloSAT=\"XSM9YXVdWvZUzuNPAKItU5YAJ5qRuACkZYDERKx26lHqvY5/iGUz/d8l9kkd7bnEo3hCceEnVAUooCU7coJsyq8tu+2j6i+4TL9qUYKsxb9baoCiQenRjmenbl7IPbsVKI7l4orB6Cz3zwLObIxwfPG4GKeJ73gNYKFtArY62LU=\" version=\"1.0\" xsi:schemaLocation=\"http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/TimbreFiscalDigital/TimbreFiscalDigital.xsd\" />\r\n"
+				+ "        </cfdi:Complemento>\r\n"
+				+ "    </cfdi:Comprobante>  ";
+		
 		try {
 
 			/*
@@ -380,7 +410,15 @@ public class ReadXmlDomParserFacturav2 {
 			 * select string xmlStr
 			 */
 			
-			String xmlStr = xmlStr_2;
+			String xmlStr = xmlStr_15;
+			/**
+			 * ( 1 )
+			 * La mayoria venia con un estandar en los nodos con la primer letra mayuscula
+			 * pero algunos prodrian venir con los nodos completamente en minusculas
+			 * Se convierte en minusculas para evitar el upercase
+			 * y buscar los nodos en minusculas
+			 */
+			xmlStr = xmlStr.toLowerCase(); //texto a Minusculas
 			
 			/*
 			 * Remove XML version
@@ -415,7 +453,7 @@ public class ReadXmlDomParserFacturav2 {
 		            	/*
 		            	 * cfdi:Comprobante
 		            	 */
-		            	NodeList listtest = doc.getElementsByTagName("cfdi:Comprobante");
+		            	NodeList listtest = doc.getElementsByTagName("cfdi:comprobante");
 		            	Node nNode = listtest.item(0);
 		            	
 		                System.out.println("Root: "+x+"::::::::::V2");
@@ -423,27 +461,38 @@ public class ReadXmlDomParserFacturav2 {
 		                System.out.println("Root Element :" + doc.getDocumentElement().getNodeName());
 		    			System.out.println("------");
 		    			
-		    			String moneda = ((Element) nNode).getAttribute("Moneda");
+		    			String moneda = ((Element) nNode).getAttribute("moneda");
 		    			if(moneda.equals("")) {moneda = "N/A";}
 		    			
-		    			String tipoCambio = ((Element) nNode).getAttribute("TipoCambio");
-		    			if(tipoCambio.equals("")) {tipoCambio = "0";}
+		    			String tipoCambioString = ((Element) nNode).getAttribute("tipocambio");
+		    			if(tipoCambioString.equals("")) {tipoCambioString = "0";}
+		    			/**
+		    			 * ( 2 )
+		    			 * La mayoria vienen como 1 o 0
+		    			 * pero algunos podrian venir como 1.0000
+		    			 * Si viene en 1.0000
+		    			 * convierte a double 1.0000
+		    			 * convierte a int 1
+		    			 */
+		    			double tipoCambioDouble = Double.valueOf(tipoCambioString);
+						int tipoCambioInt = (int)tipoCambioDouble;
 		    			
-		    			String subTotal = ((Element) nNode).getAttribute("SubTotal");
+		    			
+		    			String subTotal = ((Element) nNode).getAttribute("subtotal");
 		    			if(subTotal.equals("")) {subTotal = "0";}
 		    			
-		    			String total = ((Element) nNode).getAttribute("Total");
+		    			String total = ((Element) nNode).getAttribute("total");
 		    			if(total.equals("")) {total = "0";}
 		    			
 		    			System.out.println("Moneda: " + moneda);
-		    			System.out.println("TipoCambio: " + tipoCambio);
+		    			System.out.println("TipoCambio: " + tipoCambioInt);
 		    			System.out.println("Subtotal: " + subTotal);
 		    			System.out.println("Total: " + total);
 		    			
 		    			/*
 		    			 * cfdi:Impuestos
 		    			 */
-		    			NodeList list = doc.getElementsByTagName("cfdi:Impuestos");
+		    			NodeList list = doc.getElementsByTagName("cfdi:impuestos");
 		    			/**
 		    			 * NOTA: BUSCA TODOS LOS NODOS QUE SE LLAMEN "cfdi:Impuestos" Y LOS ITERA
 		    			 */
@@ -456,23 +505,83 @@ public class ReadXmlDomParserFacturav2 {
 		    						/*
 		    						 * cfdi:Traslados
 		    						 */
-		    						if (child.item(j).getNodeName().equals("cfdi:Traslados")) {
+		    						if (child.item(j).getNodeName().equals("cfdi:traslados")) {
 		    					
 		    							NodeList child2 = child.item(j).getChildNodes();
 		    							for (int k = 0; k < child2.getLength(); k++) {
 		    								/*
 		    								 * cfdi:Traslado
 		    								 */
-		    								if (child2.item(k).getNodeName().equals("cfdi:Traslado")) {
+		    								if (child2.item(k).getNodeName().equals("cfdi:traslado")) {
 		    									
-		    									String impuesto = ((Element) (child2.item(k))).getAttribute("Impuesto");
-		    									System.out.println("Impuesto : " + impuesto);
-		    									String importeString = ((Element) (child2.item(k))).getAttribute("Importe");
-		    									double importeDouble = Double.valueOf(importeString);
+		    									/**
+		    									 * ( 3 ) Se implementan validaciones de que no vengan empty's
+		    									 */
+		    									String impuesto = "";
+		    									if(!(((Element) (child2.item(k))).getAttribute("impuesto")).isEmpty()) {
+		    										impuesto = ((Element) (child2.item(k))).getAttribute("impuesto");
+		    										System.out.println("Impuesto : " + impuesto);
+		    									}else {
+		    										System.out.println("Impuesto:: empty");
+		    									}
 		    									
-		    									String tasaOCuotaString = ((Element) (child2.item(k))).getAttribute("TasaOCuota");
-		    									double tasaOCuotaDouble = (Double.valueOf(tasaOCuotaString))*100;
-		    									int tasaOCuotaInt = (int)tasaOCuotaDouble;
+		    									String importeString = "";
+		    									if(!(((Element) (child2.item(k))).getAttribute("importe")).isEmpty()) {
+		    										importeString = ((Element) (child2.item(k))).getAttribute("importe");
+		    									}else {
+		    										System.out.println("importe:: empty");
+		    									}
+		    									
+		    									double importeDouble=0.0;
+		    									if(!importeString.isEmpty()) {
+		    										importeDouble = Double.valueOf(importeString);
+		    									}
+		    									
+		    									/**
+		    									 * ( 4 ) nombre del nodo viene diferente
+		    									 * la mayoria vienen "tasaOcuota"
+		    									 * pero algunos prodrian venir "tasa"
+		    									 * 
+		    									 * NOTA: REDONDEAR IVA
+		    									 */
+		    									String tasaOCuotaString = "";
+		    									if((((Element) (child2.item(k))).getAttribute("tasaocuota")).isEmpty()) {
+		    										tasaOCuotaString  =  ((Element) (child2.item(k))).getAttribute("tasa");
+		    									}else {
+		    										tasaOCuotaString =  ((Element) (child2.item(k))).getAttribute("tasaocuota");
+		    									}
+		    									/**
+		    									 * ( 5 )
+		    									 * por lo general vienen 0.160000
+		    									 * pero alguno vienen 16
+		    									 *  0.160000 | 16
+		    									 * NOTA: REDONDEAR IVA
+		    									 */
+		    									double tasaOCuotaDouble = 0;
+		    									int tasaOCuotaInt = 0;
+		    									if(!tasaOCuotaString.isEmpty()) {
+		    										if(!tasaOCuotaString.equals("16")) {
+		    											tasaOCuotaDouble = (Double.valueOf(tasaOCuotaString))*100;
+			    									    tasaOCuotaInt = (int)tasaOCuotaDouble;
+		    										}else {
+		    											tasaOCuotaInt = 16;
+		    										}
+		    									    
+		    									}
+		    									
+		    									System.out.println("tasaOCuotaString: " + tasaOCuotaString);
+		    									System.out.println("tasaOCuotaInt: " + tasaOCuotaInt);
+		    									
+		    									/**
+		    									 * ( 6 ) IVA
+		    									 * la mayoria viene 002
+		    									 * pero algunos podrian venir como "iva"
+		    									 * iva -> 002
+		    									 */
+		    									if(impuesto.equalsIgnoreCase("iva")) {
+		    										impuesto = "002";
+		    									}
+		    									
 		    									switch(impuesto) {
 		    									case "002":
 			    									/**
